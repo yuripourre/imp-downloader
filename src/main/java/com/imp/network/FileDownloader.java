@@ -11,10 +11,9 @@ public class FileDownloader {
 
 	private static final int BUFFER_SIZE = 1024;
 	
-	public static void downloadAsFile(String url, String fileName) throws IOException { 
+	public static void download(String url, String output) throws IOException { 
 		URL link = new URL(url);
 
-		//Code to download
 		InputStream in = new BufferedInputStream(link.openStream());
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		byte[] buf = new byte[BUFFER_SIZE];
@@ -26,7 +25,7 @@ public class FileDownloader {
 		in.close();
 		byte[] response = out.toByteArray();
 
-		FileOutputStream fos = new FileOutputStream(fileName);
+		FileOutputStream fos = new FileOutputStream(output);
 		fos.write(response);
 		fos.close();
 	}
